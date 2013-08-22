@@ -2,7 +2,7 @@
 
 ![Robopoly sheild](https://raw.github.com/Robopoly/Robopoly-Shield/master/shield.png)
 
-This Arduino compatible shield is intended to work with the [EPFL Robotics club](http://robopoly.epfl.ch/) robotics platform [PRismino](https://github.com/Robopoly/PRismino). It can run on any Arduino as the pin placement is the same. The [PRismino library](https://github.com/Robopoly/prismino-libraries) makes it easy to use with shortcut definitions and functions.
+This Arduino compatible shield is intended to work with the [EPFL Robotics club](http://robopoly.epfl.ch/) robotics platform [PRismino](https://github.com/Robopoly/PRismino). It can run on any Arduino as the pin placement is the same. The [PRismino library](https://github.com/Robopoly/prismino-library) makes it easy to use with shortcut definitions and functions.
 
 ## Characteristics
 
@@ -18,7 +18,7 @@ The shield has various input and output components to expand the PRismino's capa
 * Footprint for a HC-05 Bluetooth module
 * 3-pin connector for power from the [Robopoly power board](https://github.com/Robopoly/Power-Board)
 
-**NOTICE**: certain components that source current are wired to the MCU pins and **may damage it if those pins are configured as outputs**, please read carefully the [PRsimino library documentation](https://github.com/Robopoly/prismino-libraries) to avoid it.
+**NOTICE**: certain components that source current are wired to the MCU pins and **may damage it if those pins are configured as outputs**, please read carefully the [PRsimino library documentation](https://github.com/Robopoly/prismino-library) to avoid it.
 
 Some elements like the button, buzzer and potentiometer can be disabled as they are connected through solder jumpers.
 
