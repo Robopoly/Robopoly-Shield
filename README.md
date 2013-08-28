@@ -1,4 +1,4 @@
-# Robopoly sheild
+# Robopoly shield
 
 ![Robopoly sheild](https://raw.github.com/Robopoly/Robopoly-Shield/master/shield.png)
 
