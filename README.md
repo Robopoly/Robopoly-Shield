@@ -4,21 +4,22 @@
 
 This Arduino compatible shield is intended to work with the [EPFL Robotics club (Robopoly)](http://robopoly.epfl.ch) robotics platform: the [PRismino](https://github.com/Robopoly/PRismino). It can run on any Arduino as the pin placement is the same. The [PRismino library](https://github.com/Robopoly/prismino-library) makes it easy to use with shortcut definitions and functions.
 
-It's main purpose is to augment the PRismino's capabilities, Robopoly organises [mobile robotics challenges](http://robopoly.epfl.ch/evenements) each year and provides all components in a form of [disassembled kit](http://robopoly.epfl.ch/prisme) including motors and sensors. The H-bridge is one of the most important components as the is allows to build a differential wheeled robot.
+It's main purpose is to augment the PRismino's capabilities, Robopoly organises [mobile robotics challenges](http://robopoly.epfl.ch/evenements) each year and provides all components in a form of [disassembled kit](http://robopoly.epfl.ch/prisme) including motors and sensors. The H-bridge is one of the most important components as the is allows to build a differential wheeled mobile robot.
 
 Tests have been carried out to see the robustness of the H-bridge, it has an overtemperature shutdown function and short-circuit protection which proved reliable.
 
-![Robopoly shield with I2C and Bluetooth module installed](shield_bluetooth.png)
+![Robopoly shield with Bluetooth module installed](shield_bluetooth.png)
 
-Robopoly shield with I<sup>2</sup>C connector and Bluetooth module installed.
+Robopoly shield with Bluetooth module installed instead of the DIP-switch.
 
 ## Characteristics
 
 The shield has various input and output components to expand the PRismino's capabilities:
 
-* Button
-* 4 channel DIP-switch
+* Push button
+* 2 channel DIP-switch
 * 2 standard servo motor connections
+* SPI port
 * Buzzer
 * 2 channel H-bridge with connectors ([DRV8833](http://www.ti.com/product/drv8833))
 * Potentiometer, can be disabled by removing a jumper
@@ -30,7 +31,7 @@ The shield has various input and output components to expand the PRismino's capa
 
 The button can serve as a reset button or an interrupt button.
 
-The DIP-switch shares the same pins as the serial pins and I<sup>2</sup>C pins, so the I<sup>2</sup>C port and/or the Bluetooth module cannot be used when the DIP-switch is used.
+The DIP-switch shares the same pins as the serial pins, so the Bluetooth module cannot be used when the DIP-switch is used.
 
 There's an absolute maximum rating of 11.8V on the VB input because of the H-bridge.
 
@@ -47,7 +48,7 @@ The assembly of the Robopoly shield is [documented on the Robopoly's website](ht
 
 Refer to the [PRsimino library](https://github.com/Robopoly/prismino-library) and [Bluetooth library](https://github.com/Robopoly/bluetooth-library) for documentation.
 
-The pins 0, 1, 2 and 3 source current, so they shouldn't be used as outputs at any time. Other pins are used for various things but do not put the micro-controller in danger when used as outputs.
+The pins 0 and 1 source current, so they shouldn't be used as outputs at any time. Other pins are used for various things but do not put the micro-controller in danger when used as outputs.
 
 | Pin | Function                          | Comments                                                           |
 | --- | --------------------------------- | ------------------------------------------------------------------ |
@@ -57,10 +58,10 @@ The pins 0, 1, 2 and 3 source current, so they shouldn't be used as outputs at a
 |`A3` |                                   |                                                                    |
 |`A4` |                                   |                                                                    |
 |`A5` |                                   |                                                                    |
-|`0`  | DIP-Switch/UART RX                | Do not use as output                                               |
-|`1`  | DIP-Switch/UART TX                | Do not use as output when DIP-Switch is connected                  |
-|`2`  | DIP-Switch/I<sup>2</sup>C SDA     | Do not use as output                                               |
-|`3`  | DIP-Switch/I<sup>2</sup>C SCL     | Do not use as output                                               |
+|`0`  | DIP-Switch/UART RX (Bluetooth)    | Do not use as output                                               |
+|`1`  | DIP-Switch/UART TX (Bluetooth)    | Do not use as output                                               |
+|`2`  | I<sup>2</sup>C SDA                | Can use internal or external pull-up resistor                      |
+|`3`  | I<sup>2</sup>C SCL                | Can use internal or external pull-up resistor                      |
 |`4`  | Bluetooth module AT mode selector |                                                                    |
 |`5`  | Servo motor                       |                                                                    |
 |`6`  | Servo motor                       |                                                                    |
@@ -74,31 +75,32 @@ The pins 0, 1, 2 and 3 source current, so they shouldn't be used as outputs at a
 
 ## Component list
 
-The quantity indicates the number of components needed when using the DIP-Switch or when using I<sup>2</sup>C and Bluetooth.
+The quantity indicates the number of components needed when using the DIP-switch or when using the Bluetooth module. In parenthesis are the 2 10K pull-up resistors for the I<sup>2</sup>C, since the micro-controller has internal pull-up resistors they are optional.
 
-| Part                                             | Reference   | Quantity |
-| ------------------------------------------------ | ----------- | -------- |
-| PCB                                              |             | 1        |
-| H-bridge (HTSSOP-16)                             | DRV8833     | 1        |
-| 10uF (minimum) ceramic capacitor                 |             | 1        |
-| 10nF, 16V (minimum), X7R, ceramic capacitor      |             | 1        |
-| 2.2uF, 6.3V, 0805 capacitor                      |             | 1        |
-| H-bridge connectors                              | 4UCON-20001 | 1        |
-| DIP switch with 4 switches                       | 4UCON-12094 | 1        |
-| 10K 0805 resistor                                |             | 6/4      |
-| 6 pin stackable header (10.5mm)                  | 4UCON-18688 | 2        |
-| 8 pin stackable header (10.5mm)                  | 4UCON-18689 | 2        |
-| Button                                           |             | 1        |
-| 3 male pins for servo motors                     | 4UCON-19631 | 2        |
-| 3 pin power connector male                       | 4UCON-19836 | 1        |
-| 3 pin power connector female                     | 4UCON-19841 | 1        |
-| Buzzer                                           |             | 1        |
-| 1K 0805 resistor                                 |             | 1/3      |
-| Potentiometer 10kOhm                             |             | 1        |
-| Bluetooth module HC-05                           | HC-05       | 0/1      |
-| 2K 0805 resistor                                 |             | 0/2      |
-| SMD LED 0805                                     |             | 1/2      |
-| Micromatch 4 pin connector                       | 7-215079-4  | 0/1      |
+| Part                                             | Reference   | Quantity  |
+| ------------------------------------------------ | ----------- | --------- |
+| PCB                                              |             | 1         |
+| H-bridge (HTSSOP-16)                             | DRV8833     | 1         |
+| 10uF (minimum) ceramic capacitor                 |             | 1         |
+| 10nF, 16V (minimum), X7R, ceramic capacitor      |             | 1         |
+| 2.2uF, 6.3V, 0805 capacitor                      |             | 1         |
+| H-bridge connectors                              | 4UCON-20001 | 1         |
+| DIP switch with 2 switches                       | 4UCON-07233 | 1         |
+| SPI 2x3 stackable header                         | 4UCON-18677 | 1         |
+| 10K 0805 resistor                                |             | 4(2)/2(2) |
+| 6 pin stackable header (10.5mm)                  | 4UCON-18688 | 2         |
+| 8 pin stackable header (10.5mm)                  | 4UCON-18689 | 2         |
+| Button                                           |             | 1         |
+| 3 male pins for servo motors                     | 4UCON-19631 | 2         |
+| 3 pin power connector male                       | 4UCON-19836 | 1         |
+| 3 pin power connector female                     | 4UCON-19841 | 1         |
+| Buzzer                                           |             | 1         |
+| 1K 0805 resistor                                 |             | 2/5       |
+| Potentiometer 10K                                |             | 1         |
+| Bluetooth module HC-05                           | HC-05       | 0/1       |
+| 2K 0805 resistor                                 |             | 0/2       |
+| SMD LED 0805                                     |             | 1/2       |
+| Micromatch 4 pin connector                       | 7-215079-4  | 1         |
 
 ## CAD files
 
@@ -108,7 +110,7 @@ All additional files needed to generate the board are in the [Robopoly Eagle CAD
 
 ## Version log
 
-### 2.0 (2014-02-06)
+### 2.0 (2014-02-10)
 
 * Added information about pin usage on silkscreen.
 * Added an optional LED on pin 13 since the one on the PRismino is hidden by the shield.
@@ -116,7 +118,9 @@ All additional files needed to generate the board are in the [Robopoly Eagle CAD
 * Moved button pull-up resistor in series with the line for short-circuit protection, the micro-controller internal pull-up shall be used instead.
 * Added jumper to potentiometer.
 * Added a resistor in series with the potentiometer line for short-circuit protection.
-* Renamed passive elements in order in which they should be soldered.
+* Renamed passive elements silkscreen information in order in which they should be soldered.
+* Changed DIP-switch to a 2 channel switch instead of 4
+* Added a stackable SPI header for future module developments
 * Rounded corners.
 * Updated CAD and Gerber files.
 * Added component list.
