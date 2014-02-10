@@ -84,7 +84,7 @@ The quantity indicates the number of components needed when using the DIP-switch
 | 10uF (minimum) ceramic capacitor                 |             | 1         |
 | 10nF, 16V (minimum), X7R, ceramic capacitor      |             | 1         |
 | 2.2uF, 6.3V, 0805 capacitor                      |             | 1         |
-| H-bridge connectors                              | 4UCON-20001 | 1         |
+| H-bridge connectors                              | 4UCON-19963 | 2         |
 | DIP switch with 2 switches                       | 4UCON-07233 | 1         |
 | SPI 2x3 stackable header                         | 4UCON-18677 | 1         |
 | 10K 0805 resistor                                |             | 4(2)/2(2) |
