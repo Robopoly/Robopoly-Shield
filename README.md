@@ -85,7 +85,7 @@ The quantity indicates the number of components needed when using the DIP-switch
 | 10nF, 16V (minimum), X7R, ceramic capacitor      |             | 1         |
 | 2.2uF, 6.3V, 0805 capacitor                      |             | 1         |
 | H-bridge connectors                              | 4UCON-19963 | 2         |
-| DIP switch with 2 switches                       | 4UCON-07233 | 1         |
+| DIP switch with 2 switches (red)                 | 4UCON-07236 | 1         |
 | SPI 2x3 stackable header                         | 4UCON-18677 | 1         |
 | 10K 0805 resistor                                |             | 4(2)/2(2) |
 | 6 pin stackable header (10.5mm)                  | 4UCON-18688 | 2         |
@@ -97,6 +97,8 @@ The quantity indicates the number of components needed when using the DIP-switch
 | Buzzer                                           |             | 1         |
 | 1K 0805 resistor                                 |             | 2/5       |
 | Potentiometer 10K                                |             | 1         |
+| 2x1 male pins for potentiometer                  | 4UCON-00795 | 1         |
+| Jumper/shunt for potentiometer (6mm, blue)       | 4UCON-05726 | 1         |
 | Bluetooth module HC-05                           | HC-05       | 0/1       |
 | 2K 0805 resistor                                 |             | 0/2       |
 | SMD LED 0805                                     |             | 1/2       |
@@ -116,7 +118,7 @@ All additional files needed to generate the board are in the [Robopoly Eagle CAD
 * Added an optional LED on pin 13 since the one on the PRismino is hidden by the shield.
 * Removed buzzer and potentiometer solder jumpers.
 * Moved button pull-up resistor in series with the line for short-circuit protection, the micro-controller internal pull-up shall be used instead.
-* Added jumper to potentiometer.
+* Added jumper to disable potentiometer and free `A0` pin for other functions.
 * Added a resistor in series with the potentiometer line for short-circuit protection.
 * Renamed passive elements silkscreen information in order in which they should be soldered.
 * Changed DIP-switch to a 2 channel switch instead of 4
