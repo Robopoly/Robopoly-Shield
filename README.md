@@ -16,7 +16,7 @@ Robopoly shield with Bluetooth module installed instead of the DIP-switch.
 
 The shield has various input and output components to expand the PRismino's capabilities:
 
-* Push button
+* Push button, can be used as a regular button (attached to an interrupt pin) or as reset button
 * 2 channel DIP-switch
 * 2 standard servo motor connections
 * SPI port
@@ -62,15 +62,15 @@ The pins 0 and 1 source current, so they shouldn't be used as outputs at any tim
 |`1`  | DIP-Switch/UART TX (Bluetooth)    | Do not use as output                                               |
 |`2`  | I<sup>2</sup>C SDA                | Can use internal or external pull-up resistor                      |
 |`3`  | I<sup>2</sup>C SCL                | Can use internal or external pull-up resistor                      |
-|`4`  | Bluetooth module AT mode selector |                                                                    |
-|`5`  | Servo motor                       |                                                                    |
-|`6`  | Servo motor                       |                                                                    |
+|`4`  | Bluetooth module AT mode selector | Enters Bluetooth module configuration mode when mounted            |
+|`5`  | Servo motor                       | Use `S1` in program when addressing the pin                        |
+|`6`  | Servo motor                       | Use `S2` in program when addressing the pin                        |
 |`7`  | Button                            | Protected by a 10K in-line resistor, use internal pull-up resistor |
-|`8`  | Buzzer                            | Do not use as input as it will consume power                       |
-|`9`  | H-bridge                          |                                                                    |
-|`10` | H-bridge                          |                                                                    |
-|`11` | H-bridge                          |                                                                    |
-|`12` | H-bridge                          |                                                                    |
+|`8`  | Buzzer                            | Disable via solder jumper to use as input                          |
+|`9`  | H-bridge                          | Can be used for anything as long as the H-bridge is not used       |
+|`10` | H-bridge                          | Can be used for anything as long as the H-bridge is not used       |
+|`11` | H-bridge                          | Can be used for anything as long as the H-bridge is not used       |
+|`12` | H-bridge                          | Can be used for anything as long as the H-bridge is not used       |
 |`13` | LED                               | Do not use as input as it will consume power                       |
 
 ## Component list
@@ -112,19 +112,20 @@ All additional files needed to generate the board are in the [Robopoly Eagle CAD
 
 ## Version log
 
-### 2.0 (2014-02-10)
+### 2.0 (2014-07-25)
 
 * Added information about pin usage on silkscreen.
 * Added an optional LED on pin 13 since the one on the PRismino is hidden by the shield.
-* Removed buzzer and potentiometer solder jumpers.
+* Replaced potentiometer solder jumper with an actual jumper to free `A0` pin for other functions.
 * Moved button pull-up resistor in series with the line for short-circuit protection, the micro-controller internal pull-up shall be used instead.
-* Added jumper to disable potentiometer and free `A0` pin for other functions.
 * Added a resistor in series with the potentiometer line for short-circuit protection.
 * Renamed passive elements silkscreen information in order in which they should be soldered.
-* Changed DIP-switch to a 2 channel switch instead of 4
-* Added a stackable SPI header for future module developments
+* Changed DIP-switch to a 2 channel switch instead of 4.
+* Added a stackable SPI header for future module developments.
+* The buzzer solder jumper is now connected by default.
 * Rounded corners.
 * Updated CAD and Gerber files.
+* Updated version number and year.
 * Added component list.
 
 ### 1.0 (2013-07-09)
